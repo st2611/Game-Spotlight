@@ -1,6 +1,7 @@
-package com.example.feature.gamehub.presentation
+package com.example.feature.gamehub.presentation.screen
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -8,7 +9,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -30,12 +30,14 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.core.domain.model.Game
 import com.example.core.utils.logger.Logger
-import org.koin.androidx.compose.koinViewModel
+import com.example.feature.gamehub.presentation.intent.GameHubIntent
+import com.example.feature.gamehub.presentation.viewmodel.GameHubViewModel
 
 
 @Composable
 fun GameHubScreen(
-    viewModel: GameHubViewModel = koinViewModel()
+    viewModel: GameHubViewModel,
+    onGameClick: (Int) -> Unit
 ) {
     val state by viewModel.state.collectAsState()
 
@@ -71,7 +73,7 @@ fun GameHubScreen(
         else -> {
             LazyColumn(modifier = Modifier.padding(16.dp)) {
                 items(state.games) { game ->
-                    GameItem(game)
+                    GameItem(game, onClick = { onGameClick(game.id) })
                 }
             }
         }
@@ -79,11 +81,12 @@ fun GameHubScreen(
 }
 
 @Composable
-fun GameItem(game: Game) {
+fun GameItem(game: Game, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp)
+            .clickable { onClick() }
     ) {
         Row(modifier = Modifier.padding(16.dp)) {
             Image(

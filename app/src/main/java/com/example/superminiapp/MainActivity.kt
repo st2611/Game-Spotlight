@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.feature.gamehub.presentation.GameHubScreen
+import com.example.feature.gamehub.presentation.navigation.GameScreenNavigation
 import com.example.superminiapp.ui.theme.SuperMiniAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -14,7 +14,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SuperMiniAppTheme {
-                GameHubScreen()
+                GameScreenNavigation()
             }
         }
     }
