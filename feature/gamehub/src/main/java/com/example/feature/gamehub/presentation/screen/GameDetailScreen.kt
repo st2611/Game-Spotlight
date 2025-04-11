@@ -1,5 +1,7 @@
 package com.example.feature.gamehub.presentation.screen
 
+import android.content.Intent
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,13 +21,17 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
 import coil.compose.AsyncImage
 import com.example.core.domain.model.GameDetail
+import com.example.core.utils.logger.Logger
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GameDetailScreen(game: GameDetail, onBackClick: () -> Unit) {
+    val context = LocalContext.current
     Scaffold(
         topBar = {
             TopAppBar(
@@ -65,10 +71,19 @@ fun GameDetailScreen(game: GameDetail, onBackClick: () -> Unit) {
 
             Spacer(modifier = Modifier.height(16.dp))
             Button(
-                onClick = { /* Open URL */ },
+                onClick = {
+                    val url = game.gameUrl
+                    if (url.isNotBlank()) {
+                        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+                        context.startActivity(intent)
+                    } else {
+                        Logger.d("Invalid game URL")
+                        Toast.makeText(context, "Invalid game URL", Toast.LENGTH_SHORT).show()
+                    }
+                },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("Play Now")
+                Text("Go to Game Page")
             }
         }
     }
