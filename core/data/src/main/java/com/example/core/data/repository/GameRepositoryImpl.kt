@@ -1,5 +1,8 @@
 package com.example.core.data.repository
 
+import com.example.core.data.local.dao.GameDao
+import com.example.core.data.local.mapper.toDomain
+import com.example.core.data.local.mapper.toEntity
 import com.example.core.data.remote.api.ApiService
 import com.example.core.data.remote.dto.toDomain
 import com.example.core.domain.model.Game
@@ -8,15 +11,27 @@ import com.example.core.domain.repository.GameRepository
 import com.example.core.utils.logger.Logger
 
 class GameRepositoryImpl(
-    private val api: ApiService
+    private val api: ApiService,
+    private val dao: GameDao
 ) : GameRepository {
     override suspend fun fetchGames(): List<Game> {
-        Logger.d("Repository: Fetching from API...")
-        val result = api.getGames()
-        Logger.d("Repository: Received ${result.size} items")
-        return result.map {
-            Logger.d("Repository: Mapping item ${it.id} - ${it.title}")
-            it.toDomain()
+        return try {
+            Logger.d("Repository: Fetching from API...")
+            val remoteGames = api.getGames()
+            Logger.d("Repository: Saving ${remoteGames.size} items to DB")
+
+            // Lưu vào Room
+            dao.insertGames(remoteGames.map { it.toEntity() })
+
+            // Trả về dạng domain
+            remoteGames.map { it.toDomain() }
+
+        } catch (e: Exception) {
+            Logger.e("Repository: API failed, loading from local DB - ${e.localizedMessage}")
+
+            // Fallback: từ local
+            val localGames = dao.getAllGames()
+            localGames.map { it.toDomain() }
         }
     }
 
