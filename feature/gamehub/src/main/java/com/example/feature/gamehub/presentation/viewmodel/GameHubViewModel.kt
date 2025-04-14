@@ -54,4 +54,8 @@ class GameHubViewModel(
             }
         }
     }
+
+    fun resetGameDetail() {
+        _state.value = _state.value.copy(selectedGame = null)
+    }
 }
