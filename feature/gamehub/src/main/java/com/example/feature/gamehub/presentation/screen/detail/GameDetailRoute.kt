@@ -1,4 +1,4 @@
-package com.example.feature.gamehub.presentation.navigation
+package com.example.feature.gamehub.presentation.screen.detail
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import com.example.feature.gamehub.presentation.intent.GameHubIntent
-import com.example.feature.gamehub.presentation.screen.GameDetailScreen
 import com.example.feature.gamehub.presentation.viewmodel.GameHubViewModel
 
 

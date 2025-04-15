@@ -1,4 +1,4 @@
-package com.example.feature.gamehub.presentation.screen
+package com.example.feature.gamehub.presentation.screen.detail
 
 import android.content.Intent
 import android.widget.Toast

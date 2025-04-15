@@ -7,7 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.feature.gamehub.presentation.screen.GameHubScreen
+import com.example.feature.gamehub.presentation.screen.detail.GameDetailRoute
+import com.example.feature.gamehub.presentation.screen.hub.GameHubScreen
 import com.example.feature.gamehub.presentation.viewmodel.GameHubViewModel
 import org.koin.androidx.compose.koinViewModel
 
