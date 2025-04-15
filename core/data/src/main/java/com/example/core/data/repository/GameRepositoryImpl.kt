@@ -18,9 +18,9 @@ class GameRepositoryImpl(
         return try {
             Logger.d("Repository: Fetching from API...")
             val remoteGames = api.getGames()
-            Logger.d("Repository: Saving ${remoteGames.size} items to DB")
 
             // Lưu vào Room
+            Logger.d("Repository: Saving ${remoteGames.size} items to DB")
             dao.insertGames(remoteGames.map { it.toEntity() })
 
             // Trả về dạng domain
@@ -28,8 +28,6 @@ class GameRepositoryImpl(
 
         } catch (e: Exception) {
             Logger.e("Repository: API failed, loading from local DB - ${e.localizedMessage}")
-
-            // Fallback: từ local
             val localGames = dao.getAllGames()
             localGames.map { it.toDomain() }
         }
