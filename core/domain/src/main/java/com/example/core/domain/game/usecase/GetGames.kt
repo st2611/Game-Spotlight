@@ -1,6 +1,6 @@
-package com.example.core.domain.usecase
+package com.example.core.domain.game.usecase
 
-import com.example.core.domain.repository.GameRepository
+import com.example.core.domain.game.repository.GameRepository
 
 class GetGames(
     private val repository: GameRepository

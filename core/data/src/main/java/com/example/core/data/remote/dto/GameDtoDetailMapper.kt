@@ -1,6 +1,6 @@
 package com.example.core.data.remote.dto
 
-import com.example.core.domain.model.GameDetail
+import com.example.core.domain.game.model.GameDetail
 
 fun GameDtoDetail.toDomain(): GameDetail {
     return GameDetail(

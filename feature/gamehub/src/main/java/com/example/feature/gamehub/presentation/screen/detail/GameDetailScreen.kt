@@ -25,7 +25,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import coil.compose.AsyncImage
-import com.example.core.domain.model.GameDetail
+import com.example.core.domain.game.model.GameDetail
 import com.example.core.utils.logger.Logger
 
 @OptIn(ExperimentalMaterial3Api::class)

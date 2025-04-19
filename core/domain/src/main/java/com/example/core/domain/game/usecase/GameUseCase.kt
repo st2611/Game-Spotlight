@@ -1,4 +1,4 @@
-package com.example.core.domain.usecase
+package com.example.core.domain.game.usecase
 
 data class GameUseCase (
     val getGames: GetGames,

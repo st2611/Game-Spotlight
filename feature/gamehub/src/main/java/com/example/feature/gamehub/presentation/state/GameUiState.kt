@@ -1,7 +1,7 @@
 package com.example.feature.gamehub.presentation.state
 
-import com.example.core.domain.model.Game
-import com.example.core.domain.model.GameDetail
+import com.example.core.domain.game.model.Game
+import com.example.core.domain.game.model.GameDetail
 
 data class GameHubState(
     val isLoading: Boolean = false,

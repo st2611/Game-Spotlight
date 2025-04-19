@@ -2,7 +2,7 @@ package com.example.feature.gamehub.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.core.domain.usecase.GameUseCase
+import com.example.core.domain.game.usecase.GameUseCase
 import com.example.core.utils.logger.Logger
 import com.example.feature.gamehub.presentation.intent.GameHubIntent
 import com.example.feature.gamehub.presentation.state.GameHubState

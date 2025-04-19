@@ -5,9 +5,9 @@ import com.example.core.data.local.mapper.toDomain
 import com.example.core.data.local.mapper.toEntity
 import com.example.core.data.remote.api.ApiService
 import com.example.core.data.remote.dto.toDomain
-import com.example.core.domain.model.Game
-import com.example.core.domain.model.GameDetail
-import com.example.core.domain.repository.GameRepository
+import com.example.core.domain.game.model.Game
+import com.example.core.domain.game.model.GameDetail
+import com.example.core.domain.game.repository.GameRepository
 import com.example.core.utils.logger.Logger
 
 class GameRepositoryImpl(
