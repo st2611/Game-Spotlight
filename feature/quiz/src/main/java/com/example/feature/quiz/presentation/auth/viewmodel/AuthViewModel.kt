@@ -28,6 +28,7 @@ class AuthViewModel(
 
             AuthIntent.SignInClicked -> signIn()
             AuthIntent.SignUpClicked -> signUp()
+            AuthIntent.ResetPassword -> resetPassword()
         }
     }
 
@@ -70,6 +71,26 @@ class AuthViewModel(
                     error = result.exceptionOrNull()?.message,
                     email = "",
                     password = ""
+                )
+            }
+        }
+    }
+
+    private fun resetPassword() {
+        viewModelScope.launch {
+            _state.value = _state.value.copy(isLoading = true, error = null)
+            val result = authUseCase.resetPasswordUseCase(state.value.email)
+
+            _state.value = when {
+                result.isSuccess -> _state.value.copy(
+                    isLoading = false,
+                    message = "Password reset email sent!",
+                    email = ""
+                )
+
+                else -> _state.value.copy(
+                    isLoading = false,
+                    error = result.exceptionOrNull()?.message
                 )
             }
         }

@@ -5,4 +5,5 @@ sealed interface AuthIntent {
     data class PasswordChanged(val password: String) : AuthIntent
     data object SignInClicked : AuthIntent
     data object SignUpClicked : AuthIntent
+    data object ResetPassword: AuthIntent
 }

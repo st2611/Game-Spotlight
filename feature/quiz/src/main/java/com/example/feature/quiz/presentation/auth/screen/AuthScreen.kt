@@ -64,6 +64,12 @@ fun AuthScreen(
         }
     }
 
+    LaunchedEffect(state.message) {
+        state.message?.let {
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+        }
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -134,7 +140,27 @@ fun AuthScreen(
             ) {
                 Text("Sign Up")
             }
+
             Spacer(modifier = Modifier.height(16.dp))
+
+            Button(
+                onClick = {
+                    if (state.email.isBlank()) {
+                        Toast.makeText(
+                            context,
+                            "Please enter email",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        return@Button
+                    }
+                    viewModel.onIntent(AuthIntent.ResetPassword)
+                }
+            ) {
+                Text("Reset Password")
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
             if (state.isLoading) CircularProgressIndicator()
         }
     }

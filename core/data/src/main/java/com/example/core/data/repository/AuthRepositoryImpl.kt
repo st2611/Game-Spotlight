@@ -37,4 +37,17 @@ class AuthRepositoryImpl(
                     cont.resume(Result.failure(it))
                 }
         }
+
+    override suspend fun resetPassword(email: String): Result<Unit> =
+        suspendCancellableCoroutine { cont ->
+            firebaseAuth.sendPasswordResetEmail(email)
+                .addOnSuccessListener {
+                    Logger.d("AuthRepository: reset password SUCCESS:")
+                    cont.resume(Result.success(Unit))
+                }
+                .addOnFailureListener {
+                    Logger.e("AuthRepository: reset password FAILED: ${it.message}")
+                    cont.resume(Result.failure(it))
+                }
+        }
 }
