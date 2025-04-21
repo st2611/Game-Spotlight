@@ -43,8 +43,8 @@ fun AuthScreen(
 
     LaunchedEffect(state.isSignInSuccess) {
         if (state.isSignInSuccess) {
-            navController.navigate(QuizScreen.Question.route) {
-                popUpTo(QuizScreen.Auth.route) { inclusive = true }
+            navController.navigate(QuizScreen.QuestionScreen.route) {
+                popUpTo(QuizScreen.AuthScreen.route) { inclusive = true }
             }
             Toast.makeText(context, "Sign In Success", Toast.LENGTH_SHORT).show()
         }

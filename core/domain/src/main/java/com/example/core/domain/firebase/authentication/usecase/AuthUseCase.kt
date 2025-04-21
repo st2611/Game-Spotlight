@@ -1,4 +1,4 @@
-package com.example.core.domain.firebase.usecase
+package com.example.core.domain.firebase.authentication.usecase
 
 data class AuthUseCase(
     val signInUseCase: SignInUseCase,

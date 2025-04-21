@@ -2,7 +2,7 @@ package com.example.feature.quiz.presentation.auth.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.core.domain.firebase.usecase.AuthUseCase
+import com.example.core.domain.firebase.authentication.usecase.AuthUseCase
 import com.example.feature.quiz.presentation.auth.intent.AuthIntent
 import com.example.feature.quiz.presentation.auth.state.AuthState
 import kotlinx.coroutines.flow.MutableStateFlow

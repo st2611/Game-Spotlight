@@ -1,6 +1,6 @@
-package com.example.core.domain.firebase.usecase
+package com.example.core.domain.firebase.authentication.usecase
 
-import com.example.core.domain.firebase.repository.AuthRepository
+import com.example.core.domain.firebase.authentication.repository.AuthRepository
 
 class SignInUseCase(
     private val authRepository: AuthRepository

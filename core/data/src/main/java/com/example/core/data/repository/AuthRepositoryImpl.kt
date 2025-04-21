@@ -1,7 +1,7 @@
 package com.example.core.data.repository
 
-import com.example.core.domain.firebase.model.AuthUser
-import com.example.core.domain.firebase.repository.AuthRepository
+import com.example.core.domain.firebase.authentication.model.AuthUser
+import com.example.core.domain.firebase.authentication.repository.AuthRepository
 import com.example.core.utils.logger.Logger
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.suspendCancellableCoroutine

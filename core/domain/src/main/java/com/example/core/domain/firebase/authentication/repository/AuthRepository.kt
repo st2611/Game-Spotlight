@@ -1,6 +1,6 @@
-package com.example.core.domain.firebase.repository
+package com.example.core.domain.firebase.authentication.repository
 
-import com.example.core.domain.firebase.model.AuthUser
+import com.example.core.domain.firebase.authentication.model.AuthUser
 
 interface AuthRepository {
     suspend fun signIn(email: String, password: String): Result<AuthUser>
